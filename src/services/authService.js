@@ -5,7 +5,7 @@ const login = async (email, password) => {
   formData.append('username', email);
   formData.append('password', password);
 
-  const response = await apiClient.post('/auth/auth/jwt/login', formData, { // Changed path
+  const response = await apiClient.post('/auth/auth/jwt/login', formData, {
      headers: {
        'Content-Type': 'application/x-www-form-urlencoded',
      },
@@ -19,7 +19,7 @@ const login = async (email, password) => {
 };
 
 const signup = async (email, password) => {
-  const response = await apiClient.post('/auth/auth/register', { // Changed path
+  const response = await apiClient.post('/auth/auth/register', {
     email,
     password,
   });
@@ -28,7 +28,7 @@ const signup = async (email, password) => {
 
 const logout = async () => {
    try {
-     await apiClient.post('/auth/auth/jwt/logout'); // Changed path
+     await apiClient.post('/auth/auth/jwt/logout');
      console.log("Server-side logout successful.");
    } catch (error) {
      console.warn("Server-side logout failed (might be okay if token is just removed client-side):", error.response?.data || error.message);

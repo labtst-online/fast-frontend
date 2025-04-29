@@ -8,11 +8,15 @@ import LoadingSpinner from '../Common/LoadingSpinner';
 import { updateMyProfile } from '../../services/profileService';
 import useAuth from '../../hooks/useAuth';
 
+
+const PLACEHOLDER_AVATAR_EDIT = 'https://placehold.co/80x80/e2e8f0/a0aec0?text=Avatar';
+const PLACEHOLDER_AVATAR_ERROR = 'https://placehold.co/80x80/e2e8f0/a0aec0?text=Error';
+
 const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: profileError }) => {
   const [displayName, setDisplayName] = useState('');
   const [bio, setBio] = useState('');
   const [iconFile, setIconFile] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(currentProfile?.avatar_url || PLACEHOLDER_AVATAR_EDIT);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
@@ -26,7 +30,9 @@ const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: p
     if (currentProfile) {
       setDisplayName(currentProfile.display_name || '');
       setBio(currentProfile.bio || '');
-      setPreviewUrl(currentProfile.avatar_url || null);
+      setPreviewUrl(currentProfile.avatar_url || PLACEHOLDER_AVATAR_EDIT);
+    } else {
+      setPreviewUrl(PLACEHOLDER_AVATAR_EDIT);
     }
      setSubmitError(null);
   }, [currentProfile]);
@@ -36,7 +42,6 @@ const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: p
     if (file) {
       if (file.size > 2 * 1024 * 1024) { // 2MB limit
           setSubmitError("File size exceeds 2MB limit.");
-          // Clear the input value
           if(fileInputRef.current) fileInputRef.current.value = "";
           return;
       }
@@ -68,18 +73,22 @@ const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: p
 
     const formData = new FormData();
 
-    if (displayName !== (currentProfile?.display_name || '')) {
-        formData.append('display_name', displayName);
-    }
-     if (bio !== (currentProfile?.bio || '')) {
-        formData.append('bio', bio);
-    }
-    if (iconFile) {
-      formData.append('icon', iconFile);
+    formData.append('display_name', displayName);
+    formData.append('bio', bio);
+
+    console.log('Value of iconFile state before appending:', iconFile);
+
+    if (iconFile instanceof File) {
+      formData.append('icon', iconFile, iconFile.name);
+      console.log('Appended icon file to FormData:', iconFile.name);
+    } else if (iconFile) {
+      console.warn('iconFile state was truthy but not an instance of File:', iconFile);
     }
 
     let hasChanges = false;
-    if (displayName !== (currentProfile?.display_name || '') || bio !== (currentProfile?.bio || '') || iconFile) {
+    if (displayName !== (currentProfile?.display_name || '') ||
+        bio !== (currentProfile?.bio || '') ||
+        (iconFile instanceof File)) {
         hasChanges = true;
     }
 
@@ -88,6 +97,8 @@ const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: p
         setIsSubmitting(false);
         return;
     }
+
+    console.log('Submitting FormData...'); 
 
     try {
       await updateMyProfile(formData);
@@ -104,7 +115,7 @@ const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: p
 
    if (isProfileLoading) return <div className="flex justify-center"><LoadingSpinner /></div>;
    if (profileError) return <ErrorMessage message={`Error loading profile data for editing: ${profileError}`} />;
-   if (!currentProfile) return <ErrorMessage message="Profile data unavailable for editing." />;
+   if (!currentProfile && !isProfileLoading) return <ErrorMessage message="Profile data unavailable for editing." />;
 
 
   return (
@@ -114,11 +125,11 @@ const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: p
             <ErrorMessage message={submitError} />
 
              <div className="flex items-center space-x-4">
-                 <img
-                    className="h-20 w-20 rounded-full object-cover border-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700" // Added background
-                    src={previewUrl || '[https://placehold.co/80x80/e2e8f0/a0aec0?text=Avatar](https://placehold.co/80x80/e2e8f0/a0aec0?text=Avatar)'} // Show preview or placeholder
+                <img
+                    className="h-20 w-20 rounded-full object-cover border-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700"
+                    src={previewUrl}
                     alt="Avatar Preview"
-                    onError={(e) => { e.target.src = '[https://placehold.co/80x80/e2e8f0/a0aec0?text=Error](https://placehold.co/80x80/e2e8f0/a0aec0?text=Error)'; }} // Fallback on error
+                    onError={(e) => { e.target.src = PLACEHOLDER_AVATAR_ERROR; }}
                  />
                  <div>
                      <label htmlFor="icon-upload" className={`cursor-pointer text-sm font-medium px-3 py-1.5 rounded border ${isSubmitting ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-white dark:bg-dark-bg-secondary border-gray-300 dark:border-gray-600 text-gray-700 dark:text-dark-text-secondary hover:bg-gray-50 dark:hover:bg-gray-700'}`}>
@@ -130,11 +141,11 @@ const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: p
                         name="icon"
                         type="file"
                         className="sr-only"
-                        accept="image/png, image/jpeg, image/gif"
+                        accept="image/png, image/jpeg"
                         onChange={handleFileChange}
                         disabled={isSubmitting}
                      />
-                     <p className="text-xs text-gray-500 dark:text-dark-text-secondary mt-1">PNG, JPG, GIF (Max 2MB).</p>
+                     <p className="text-xs text-gray-500 dark:text-dark-text-secondary mt-1">PNG, JPG (Max 2MB).</p>
                  </div>
              </div>
 

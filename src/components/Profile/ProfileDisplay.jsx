@@ -4,7 +4,7 @@ import Button from '../Common/Button';
 import LoadingSpinner from '../Common/LoadingSpinner';
 import ErrorMessage from '../Common/ErrorMessage';
 
-const PLACEHOLDER_AVATAR = '[https://placehold.co/128x128/e2e8f0/a0aec0?text=No+Avatar](https://placehold.co/128x128/e2e8f0/a0aec0?text=No+Avatar)';
+const PLACEHOLDER_AVATAR = 'https://placehold.co/128x128/e2e8f0/a0aec0?text=No+Avatar';
 
 const ProfileDisplay = ({ profile, isLoading, error }) => {
   if (isLoading) {
@@ -12,7 +12,7 @@ const ProfileDisplay = ({ profile, isLoading, error }) => {
   }
 
   if (error) {
-    const displayError = error.includes("Profile not found") ? error : `Failed to load profile: ${error}`;
+    const displayError = error ? `Failed to load profile: ${error}` : "Profile data could not be loaded.";
     return <ErrorMessage message={displayError} />;
   }
 
@@ -28,8 +28,8 @@ const ProfileDisplay = ({ profile, isLoading, error }) => {
     <div className="bg-white dark:bg-dark-bg-secondary shadow-lg rounded-lg p-6 md:p-8 max-w-2xl mx-auto">
       <div className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
         <div className="flex-shrink-0">
-          <img
-            className="h-24 w-24 md:h-32 md:w-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-600" // Added background color
+        <img
+            className="h-24 w-24 md:h-32 md:w-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-600"
             src={profile.avatar_url || PLACEHOLDER_AVATAR}
             alt={profile.display_name ? `${profile.display_name}'s Avatar` : 'User Avatar'}
             onError={handleImageError}
