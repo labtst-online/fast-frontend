@@ -1,13 +1,15 @@
 import React from 'react';
 
-const Footer = () => {
-    return (
-      <footer className="bg-gray-100 dark:bg-dark-bg-secondary mt-auto py-4 px-4 sm:px-6 lg:px-8 text-center border-t border-gray-200 dark:border-dark-border">
-        <p className="text-sm text-gray-600 dark:text-dark-text-secondary">
-          &copy; {new Date().getFullYear()} FastBoosty. I hope All rights reserved. It is just a pet-project. Not for production.
-        </p>
-      </footer>
-    );
-  };
-  
-  export default Footer;
+const Footer = () => (
+  <footer className="bg-gradient-to-r from-main to-secondary \
+                     dark:from-mainDark dark:to-secondaryDark \
+                     mt-auto py-6">
+    <div className="container mx-auto px-4 text-center">
+      <p className="text-sm font-light text-text dark:text-textDark">
+        &copy; {new Date().getFullYear()} FastBoosty. I hope all rights reserved. It is just a pet-project. Not for production.
+      </p>
+    </div>
+  </footer>
+);
+
+export default Footer;

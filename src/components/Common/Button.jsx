@@ -15,10 +15,10 @@ const Button = ({
   const baseStyle = 'inline-flex items-center justify-center font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-dark-bg transition ease-in-out duration-150';
 
   const variantStyles = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-400 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-400 dark:disabled:bg-blue-700 dark:disabled:text-gray-300',
-    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400 disabled:bg-gray-100 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-500 dark:disabled:bg-gray-800 dark:disabled:text-gray-400',
-    danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 disabled:bg-red-400 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-400 dark:disabled:bg-red-800 dark:disabled:text-gray-300',
-    ghost: 'bg-transparent text-gray-800 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 focus:ring-gray-400 disabled:opacity-50',
+    primary: 'bg-main text-white hover:bg-secondary focus:ring-secondary disabled:bg-secondary dark:bg-mainDark dark:hover:bg-secondaryDark dark:focus:ring-secondaryDark dark:disabled:bg-secondaryDark dark:disabled:text-textDark',
+    secondary: 'bg-secondary text-text hover:bg-main focus:ring-main disabled:bg-main dark:bg-secondaryDark dark:text-textDark dark:hover:bg-mainDark dark:focus:ring-mainDark dark:disabled:bg-mainDark dark:disabled:text-textDark',
+    danger: 'bg-statement text-white hover:bg-main focus:ring-main disabled:bg-secondary dark:bg-statementDark dark:hover:bg-mainDark dark:focus:ring-mainDark dark:disabled:bg-secondaryDark dark:disabled:text-textDark',
+    ghost: 'bg-transparent text-text hover:bg-secondary dark:text-textDark dark:hover:bg-backgroundDark focus:ring-statement disabled:opacity-50',
   };
 
   const sizeStyles = {

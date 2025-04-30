@@ -25,11 +25,11 @@ const ProfileDisplay = ({ profile, isLoading, error }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-dark-bg-secondary shadow-lg rounded-lg p-6 md:p-8 max-w-2xl mx-auto">
+    <div className="bg-background dark:bg-backgroundDark shadow-lg rounded-lg p-6 md:p-8 max-w-2xl mx-auto">
       <div className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
         <div className="flex-shrink-0">
         <img
-            className="h-24 w-24 md:h-32 md:w-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-600"
+            className="h-24 w-24 md:h-32 md:w-32 rounded-full object-cover border-4 border-secondary dark:border-secondaryDark bg-background dark:bg-backgroundDark"
             src={profile.avatar_url || PLACEHOLDER_AVATAR}
             alt={profile.display_name ? `${profile.display_name}'s Avatar` : 'User Avatar'}
             onError={handleImageError}
@@ -37,19 +37,19 @@ const ProfileDisplay = ({ profile, isLoading, error }) => {
         </div>
 
         <div className="flex-grow text-center md:text-left">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-dark-text break-words">
+          <h1 className="text-2xl md:text-3xl font-bold text-text dark:text-textDark break-words">
             {profile.display_name || 'User'}
           </h1>
-          <p className="mt-3 text-gray-700 dark:text-dark-text-secondary whitespace-pre-wrap break-words">
+          <p className="mt-3 text-text dark:text-textDark whitespace-pre-wrap break-words">
             {profile.bio || <span className="italic">No bio provided.</span>}
           </p>
-          <p className="text-xs text-gray-400 dark:text-gray-500 mt-4">
+          <p className="text-xs text-secondary dark:text-secondaryDark mt-4">
             Joined: {profile.created_at ? new Date(profile.created_at).toLocaleDateString() : 'N/A'}
           </p>
         </div>
       </div>
 
-      <div className="mt-6 text-center md:text-right border-t border-gray-200 dark:border-dark-border pt-4">
+      <div className="mt-6 text-center md:text-right border-t border-secondary dark:border-secondaryDark pt-4">
         <Link to="/profile/edit">
           <Button variant="secondary">Edit Profile</Button>
         </Link>

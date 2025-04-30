@@ -119,20 +119,20 @@ const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: p
 
 
   return (
-    <div className="bg-white dark:bg-dark-bg-secondary shadow-lg rounded-lg p-6 md:p-8 max-w-2xl mx-auto">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-dark-text mb-6 border-b border-gray-200 dark:border-dark-border pb-3">Edit Profile</h2>
+    <div className="bg-background dark:bg-backgroundDark shadow-lg rounded-lg p-6 md:p-8 max-w-2xl mx-auto">
+        <h2 className="text-2xl font-bold text-text dark:text-textDark mb-6 border-b border-secondary dark:border-secondaryDark pb-3">Edit Profile</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
             <ErrorMessage message={submitError} />
 
              <div className="flex items-center space-x-4">
                 <img
-                    className="h-20 w-20 rounded-full object-cover border-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700"
+                    className="h-20 w-20 rounded-full object-cover border-2 border-secondary dark:border-secondaryDark bg-background dark:bg-backgroundDark"
                     src={previewUrl}
                     alt="Avatar Preview"
                     onError={(e) => { e.target.src = PLACEHOLDER_AVATAR_ERROR; }}
                  />
                  <div>
-                     <label htmlFor="icon-upload" className={`cursor-pointer text-sm font-medium px-3 py-1.5 rounded border ${isSubmitting ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-white dark:bg-dark-bg-secondary border-gray-300 dark:border-gray-600 text-gray-700 dark:text-dark-text-secondary hover:bg-gray-50 dark:hover:bg-gray-700'}`}>
+                     <label htmlFor="icon-upload" className={`cursor-pointer text-sm font-medium px-3 py-1.5 rounded border ${isSubmitting ? 'bg-secondary text-text cursor-not-allowed' : 'bg-background dark:bg-backgroundDark border-secondary dark:border-secondaryDark text-text dark:text-textDark hover:bg-secondary dark:hover:bg-secondaryDark'}`}>
                          Change Avatar
                      </label>
                      <input
@@ -145,7 +145,7 @@ const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: p
                         onChange={handleFileChange}
                         disabled={isSubmitting}
                      />
-                     <p className="text-xs text-gray-500 dark:text-dark-text-secondary mt-1">PNG, JPG (Max 2MB).</p>
+                     <p className="text-xs text-secondary dark:text-secondaryDark mt-1">PNG, JPG (Max 2MB).</p>
                  </div>
              </div>
 
@@ -172,7 +172,7 @@ const ProfileEditForm = ({ currentProfile, isLoading: isProfileLoading, error: p
                 disabled={isSubmitting}
             />
 
-            <div className="flex justify-end space-x-3 pt-4 border-t border-gray-200 dark:border-dark-border">
+            <div className="flex justify-end space-x-3 pt-4 border-t border-secondary dark:border-secondaryDark">
                 <Button type="button" variant="secondary" onClick={() => navigate('/profile/me')} disabled={isSubmitting}>
                     Cancel
                 </Button>

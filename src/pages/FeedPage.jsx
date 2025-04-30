@@ -61,7 +61,7 @@ const FeedPage = () => {
     return (
         <div>
             <div className="flex justify-between items-center mb-6">
-                 <h1 className="text-3xl font-bold text-gray-900 dark:text-dark-text">My Posts</h1>
+                 <h1 className="text-3xl font-bold text-main dark:text-mainDark">My Posts</h1>
                  <Link to="/posts/new">
                     <Button variant="primary">Create New Post</Button>
                  </Link>

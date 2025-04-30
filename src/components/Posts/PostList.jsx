@@ -14,12 +14,12 @@ const PostList = ({ posts, isLoading, error, title = "Posts", emptyMessage = "No
   }
 
   if (!posts || posts.length === 0) {
-    return <p className="text-center text-gray-500 dark:text-dark-text-secondary py-8">{emptyMessage}</p>;
+    return <p className="text-center text-secondary dark:text-secondaryDark py-8">{emptyMessage}</p>;
   }
 
   return (
     <section>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-dark-text mb-6">{title}</h2>
+        <h2 className="text-2xl font-bold text-main dark:text-mainDark mb-6">{title}</h2>
         <div className="space-y-6">
             {posts.map((post) => (
                 <PostCard key={post.id} post={post} />

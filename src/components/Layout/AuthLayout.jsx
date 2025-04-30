@@ -1,23 +1,17 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import ThemeToggle from '../UI/ThemeToggle';
 
-const AuthLayout = ({ children }) => {
-  return (
-    <div className="bg-gray-50 dark:bg-dark-bg min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
-       <div className="absolute top-4 right-4">
-           <ThemeToggle />
-       </div>
-       <div className="mb-8">
-            <Link to="/" className="text-3xl font-bold text-blue-600 dark:text-blue-400 hover:opacity-80 transition-opacity">
-              FastBoosty
-            </Link>
-       </div>
-      <div className="max-w-md w-full space-y-8 bg-white dark:bg-dark-bg-secondary p-8 rounded-lg shadow-md">
-        {children || <Outlet />}
-      </div>
+const AuthLayout = ({ children }) => (
+  <div className="min-h-screen flex flex-col items-center justify-center bg-background dark:bg-backgroundDark py-12 px-4 sm:px-6 lg:px-8">
+    <div className="absolute top-4 right-4">
+      <ThemeToggle />
     </div>
-  );
-};
+    <Link to="/" className="mb-8 text-3xl font-bold text-main dark:text-mainDark hover:opacity-80 transition-opacity">
+      FastBoosty
+    </Link>
+    {children || <Outlet />}
+  </div>
+);
 
 export default AuthLayout;

@@ -35,62 +35,56 @@ const SignupForm = () => {
   };
 
   return (
-    <div>
-      <h2 className="mt-6 text-center text-3xl font-bold text-gray-900 dark:text-dark-text">
-        Create your account
-      </h2>
-      <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-        <ErrorMessage message={authError} />
-        <ErrorMessage message={formError} />
-        <Input
-          id="signup-email"
-          name="email"
-          type="email"
-          autoComplete="email"
-          required
-          label="Email address"
-          placeholder="you@example.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          disabled={isLoading}
-        />
-        <Input
-          id="signup-password"
-          name="password"
-          type="password"
-          autoComplete="new-password"
-          required
-          label="Password"
-          placeholder="Password (min. 8 characters)"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          error={formError && formError.includes("Password must be") ? formError : ""}
-          disabled={isLoading}
-        />
-        <Input
-          id="confirm-password"
-          name="confirm-password"
-          type="password"
-          autoComplete="new-password"
-          required
-          label="Confirm Password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          error={formError && formError.includes("match") ? formError : ""}
-          disabled={isLoading}
-        />
-        <Button type="submit" variant="primary" className="w-full" isLoading={isLoading} disabled={isLoading}>
-          Sign up
-        </Button>
-         <p className="mt-4 text-center text-sm text-gray-600 dark:text-dark-text-secondary">
-            Already have an account?{' '}
-            <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
-              Sign in
-            </Link>
-          </p>
-      </form>
-    </div>
+    <div className="flex items-center justify-center min-h-full py-12 px-4 sm:px-6 lg:px-8 bg-background dark:bg-backgroundDark">
+      <div className="max-w-md w-full space-y-8 bg-background dark:bg-backgroundDark p-8 rounded-2xl shadow-lg">
+        <h2 className="mt-6 text-center text-3xl font-bold text-text dark:text-textDark">Create your account</h2>
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <ErrorMessage message={authError || formError} />
+            <Input
+              id="signup-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              label="Email address"
+              placeholder="user@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={isLoading}
+            />
+            <Input
+              id="signup-password"
+              name="password"
+              type="password"
+              autoComplete="new-password"
+              required
+              label="Password"
+              placeholder="Password (min. 8 characters)"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              error={formError && formError.includes("Password must be") ? formError : ""}
+              disabled={isLoading}
+            />
+            <Input
+              id="confirm-password"
+              name="confirm-password"
+              type="password"
+              autoComplete="new-password"
+              required
+              label="Confirm Password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              error={formError && formError.includes("match") ? formError : ""}
+              disabled={isLoading}
+            />
+            <Button type="submit" variant="primary" className="w-full" isLoading={isLoading}>Sign up</Button>
+            <p className="mt-4 text-center text-sm text-secondary dark:text-secondaryDark">
+              Already have an account? <Link to="/login" className="font-medium hover:underline">Sign in</Link>
+            </p>
+          </form>
+        </div>
+      </div>  
   );
 };
 

@@ -43,8 +43,8 @@ const PostForm = () => {
     };
 
     return (
-        <div className="bg-white dark:bg-dark-bg-secondary shadow-lg rounded-lg p-6 md:p-8 max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-dark-text mb-6 border-b border-gray-200 dark:border-dark-border pb-3">Create New Post</h2>
+        <div className="bg-main dark:bg-mainDark shadow-lg rounded-lg p-6 md:p-8 max-w-3xl mx-auto text-text dark:text-textDark">
+            <h2 className="text-2xl font-bold text-text dark:text-textDark mb-6">Create New Post</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
                 <ErrorMessage message={submitError} />
 
@@ -72,7 +72,7 @@ const PostForm = () => {
                     disabled={isSubmitting}
                 />
 
-                <div className="flex justify-end space-x-3 pt-4 border-t border-gray-200 dark:border-dark-border">
+                <div className="flex justify-end space-x-3 pt-4">
                     <Button type="button" variant="secondary" onClick={() => navigate(-1)} disabled={isSubmitting}>
                         Cancel
                     </Button>

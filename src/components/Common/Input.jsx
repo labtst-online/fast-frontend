@@ -15,14 +15,14 @@ const Input = ({
   }) => {
     const baseStyle = 'block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none sm:text-sm';
     const borderStyle = error
-      ? 'border-red-500 focus:ring-red-500 focus:border-red-500 dark:border-red-400 dark:focus:ring-red-400 dark:focus:border-red-400'
-      : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400';
-    const backgroundStyle = 'bg-white dark:bg-dark-bg-secondary text-gray-900 dark:text-dark-text';
+      ? 'border-statement focus:ring-statement focus:border-statement dark:border-statementDark dark:focus:ring-statementDark dark:focus:border-statementDark'
+      : 'border-secondary dark:border-secondaryDark focus:ring-main focus:border-main dark:focus:ring-mainDark dark:focus:border-mainDark';
+    const backgroundStyle = 'bg-background dark:bg-backgroundDark text-text dark:text-textDark';
   
     return (
       <div className="mb-4">
         {label && (
-          <label htmlFor={id || name} className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-1">
+          <label htmlFor={id || name} className="block text-sm font-medium text-text dark:text-textDark mb-1">
             {label} {required && <span className="text-red-500">*</span>}
           </label>
         )}

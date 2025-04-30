@@ -5,30 +5,30 @@ import Button from '../components/Common/Button';
 import LoadingSpinner from '../components/Common/LoadingSpinner';
 
 const HomePage = () => {
-  const { isAuthenticated, user, isLoading } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
 
   return (
-    <div className="text-center py-10">
-      <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-dark-text">Welcome to FastBoosty!</h1>
-      <p className="text-lg text-gray-600 dark:text-dark-text-secondary mb-8 max-w-2xl mx-auto">
-        The platform designed to connect creators with their fans and build communities.
+    <section className="text-center py-16 bg-background dark:bg-backgroundDark">
+      <h2 className="text-4xl font-bold mb-6 text-text dark:text-textDark">
+        Welcome to FastBoosty!
+      </h2>
+      <p className="text-lg mb-8 text-gray-600 dark:text-gray-400 max-w-lg mx-auto">
+        Connect with creators, build communities, and explore featured content.
       </p>
+
       {isLoading ? (
-         <LoadingSpinner />
-      ) : isAuthenticated && user ? (
-        <div className="space-y-4">
-          <p className="text-xl">Hello, <span className="font-semibold">{user.display_name || user.email}</span>!</p>
-          <div className="flex justify-center items-center space-x-4">
-              <Link to="/feed">
-                <Button variant="primary" size="lg">View My Posts</Button>
-              </Link>
-              <Link to="/posts/new">
-                <Button variant="secondary" size="lg">Create a New Post</Button>
-              </Link>
-          </div>
+        <LoadingSpinner />
+      ) : isAuthenticated ? (
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Link to="/feed">
+            <Button variant="primary" size="lg">View Posts</Button>
+          </Link>
+          <Link to="/posts/new">
+            <Button variant="secondary" size="lg">New Post</Button>
+          </Link>
         </div>
       ) : (
-        <div className="space-x-4">
+        <div className="flex justify-center gap-4">
           <Link to="/login">
             <Button variant="primary" size="lg">Login</Button>
           </Link>
@@ -37,11 +37,7 @@ const HomePage = () => {
           </Link>
         </div>
       )}
-       <div className="mt-16 border-t border-gray-200 dark:border-dark-border pt-8">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-dark-text">Featured Content</h2>
-            <p className="text-gray-500 dark:text-dark-text-secondary">Featured creators and posts will appear here soon!</p>
-       </div>
-    </div>
+    </section>
   );
 };
 
