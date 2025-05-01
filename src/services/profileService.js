@@ -10,4 +10,9 @@ const updateMyProfile = async (formData) => {
   return response.data;
 };
 
-export { getMyProfile, updateMyProfile };
+const getUserProfile = async (profileId) => {
+  const response = await apiClient.get(`/profile/profiles/profile/${profileId}`);
+  return response.data;
+}
+
+export { getMyProfile, updateMyProfile, getUserProfile };
