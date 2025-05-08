@@ -110,6 +110,7 @@ export const AuthProvider = ({ children }) => {
     signup,
     logout,
     reloadUserProfile: fetchUserProfile,
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }), [user, token, isLoading, authError, fetchUserProfile]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
