@@ -6,8 +6,8 @@ on:
       - main
 
 permissions:
-  contents: write    # для создания Git-тегов и записи коммитов
-  packages: write    # для пуша образа в GHCR
+  contents: write
+  packages: write
 
 jobs:
   release-and-deploy:
