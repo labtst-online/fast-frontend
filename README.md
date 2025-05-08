@@ -32,4 +32,4 @@ npm run dev
 
 ## License
 
-The Fastboosty Frontend Prototype is licensed under the terms of the MIT license.
+This repository is licensed under the terms of the MIT license.
