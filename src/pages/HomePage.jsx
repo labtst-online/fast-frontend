@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <section className="text-center py-16 bg-background dark:bg-backgroundDark">
       <h2 className="text-4xl font-bold mb-6 text-text dark:text-textDark">
-        Welcome to FastBoosty!
+        Welcome to Labtst-Online!
       </h2>
       <p className="text-lg mb-8 text-gray-600 dark:text-gray-400 max-w-lg mx-auto">
         Connect with creators, build communities, and explore featured content.

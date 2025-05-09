@@ -6,7 +6,7 @@ const Footer = () => (
                      mt-auto py-6">
     <div className="container mx-auto px-4 text-center">
       <p className="text-sm font-light text-text dark:text-textDark">
-        &copy; {new Date().getFullYear()} FastBoosty. I hope all rights reserved. It is just a pet-project. Not for production.
+        &copy; {new Date().getFullYear()} Labtst-Online. I hope all rights reserved. It is just a pet-project. Not for production.
       </p>
     </div>
   </footer>

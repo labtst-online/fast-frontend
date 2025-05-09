@@ -1,19 +1,19 @@
-# FastBoosty – Frontend Prototype
+# Frontend Prototype
 
-A minimal React prototype that consumes Auth, Profile and Content services. It is part of the **FastBoosty** app.
+A minimal React prototype that consumes Auth, Profile and Content services. It is part of the FastAPI app.
 
 ## Prerequisites
 
 - Node.js v23+
-- Running Auth, Profile and Content services (via [`fastboosty-deployment`](https://github.com/fastboosty/fastboosty-deployment))
+- Running Auth, Profile and Content services (via [`fast-deployment`](https://github.com/labtst-online/fast-deployment))
 
 ## Getting Started
 
 ### 1. Clone repository & install
 
 ```bash
-git clone https://github.com/fastboosty/fastboosty-frontend.git
-cd fastboosty-frontend
+git clone https://github.com/labtst-online/fast-frontend.git
+cd fast-frontend
 npm install
 ```
 
@@ -22,7 +22,7 @@ npm install
 ```bash
 cp .env.sample .env
 ```
-> Change varibles before `docker-compose up`
+> Change variables before `docker-compose up`
 
 ### 3. Run frontend
 

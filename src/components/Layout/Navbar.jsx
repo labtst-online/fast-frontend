@@ -22,7 +22,7 @@ const Navbar = () => {
     <nav className="bg-background dark:bg-gray-800 shadow sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
         <Link to="/" className="text-2xl font-bold text-main dark:text-mainDark hover:opacity-80 transition-opacity">
-          FastBoosty
+          Labtst-Online
         </Link>
 
         <div className="hidden md:flex space-x-4">
